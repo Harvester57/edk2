@@ -17,6 +17,9 @@ on:
   issues:
     types: [ opened ]
 
+permissions:
+  contents: read
+
 jobs:
   triage_issue:
     name: Triage Issue
@@ -30,17 +33,17 @@ jobs:
       issues: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Parse Issue Form
-        uses: stefanbuck/github-issue-parser@v3
+        uses: stefanbuck/github-issue-parser@2ea9b35a8c584529ed00891a8f7e41dc46d0441e # v3.2.1
         id: issue-parser
         with:
           issue-body: ${{ github.event.issue.body }}
           template-path: .github/ISSUE_TEMPLATE/${{ matrix.template }}
 
       - name: Apply Labels from Triage
-        uses: redhat-plumbers-in-action/advanced-issue-labeler@v3
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@0db433d412193574252480b4fc22f2e4319a4ea3 # v3.2.2
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           template: ${{ matrix.template }}
