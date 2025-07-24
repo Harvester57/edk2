@@ -76,7 +76,7 @@ jobs:
         if: ${{ startsWith(inputs.runs-on, 'ubuntu') }}
 
       - name: Set up Python ${{ inputs.python-version }}
-        uses: actions/setup-python@e9aba2c848f5ebd159c070c61ea2c4e2b122355e # v2.3.4
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: ${{ inputs.python-version }}
         if: ${{ !startsWith(inputs.runs-on, 'ubuntu') }}
